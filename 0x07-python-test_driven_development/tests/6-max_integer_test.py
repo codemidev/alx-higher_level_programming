@@ -1,71 +1,63 @@
 #!/usr/bin/python3
-"""Unittest for max_integer([..])
-"""
+"""Unittest for max_integer([..])"""
+
+
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
 
 class TestMaxInteger(unittest.TestCase):
-    """unittest class for max_integer"""
-    def test_module_docstring(self):
-        """Tests for module docsting"""
-        m = __import__('6-max_integer').__doc__
-        self.assertTrue(len(m) > 1)
+    """Define unittests for max_integer([..])."""
 
-    def test_function_docstring(self):
-        """Tests for funstion docstring"""
-        f = max_integer.__doc__
-        self.assertTrue(len(f) > 1)
+    def test_ordered_list(self):
+        """Test an ordered list of integers."""
+        ordered = [1, 2, 3, 4]
+        self.assertEqual(max_integer(ordered), 4)
+
+    def test_unordered_list(self):
+        """Test an unordered list of integers."""
+        unordered = [1, 3, 4, 2]
+        self.assertEqual(max_integer(unordered), 4)
+
+    def test_ordered_negative_list(self):
+        """Test an ordered list of negative integers."""
+        negative_ordered = [-1, -2, -3, -4]
+        self.assertEqual(max_integer(negative_ordered), -1)
+
+    def test_unordered_negative_list(self):
+        """Test an unordered list of negative integers."""
+        negative_unordered = [-1, -3, -4, -2]
+        self.assertEqual(max_integer(negative_unordered), -1)
 
     def test_empty_list(self):
-        """Tests for empty list []"""
-        e = []
-        self.assertIsNone(max_integer(e))
+        """Test an empty list."""
+        empty_list = []
+        self.assertEqual(max_integer(empty_list), None)
 
-    def test_no_args(self):
-        """Tests for no arguments passed to func"""
-        self.assertIsNone(max_integer())
+    def test_single_element_list(self):
+        """Test a list with one element."""
+        single_element_list = [12]
+        self.assertEqual(max_integer(single_element_list), 12)
 
-    def test_one_element(self):
-        """Tests for only one number in the list"""
-        o = [1]
-        self.assertEqual(max_integer(o), 1)
+    def test_float_list(self):
+        """Test a list with floats."""
+        float_list = [1.0, 2.0, 3.0, 4.0]
+        self.assertEqual(max_integer(float_list), 4.0)
 
-    def test_positive_end(self):
-        """Tests for all positive with max at end"""
-        e = [2, 10, 8, 36, 14, 50]
-        self.assertEqual(max_integer(e), 50)
+    def test_floats_and_ints(self):
+        """Test a list with floats and ints."""
+        float_and_int_list = [1.0, 2, 3.0, 4]
+        self.assertEqual(max_integer(float_and_int_list), 4)
 
-    def test_positive_middle(self):
-        """Tests for all positive with max in middle"""
-        m = [2, 10, 8, 360, 14, 50]
-        self.assertEqual(max_integer(m), 360)
+    def test_string_list(self):
+        """Test a list of strings."""
+        string_list = ['a', 'b', 'c', 'd']
+        self.assertEqual(max_integer(string_list), 'd')
 
-    def test_positive_beginning(self):
-        """Tests for all positive with max at beginning"""
-        b = [200, 10, 8, 36, 14, 50]
-        self.assertEqual(max_integer(b), 200)
+    def test_string(self):
+        """Test a single string."""
+        string = ['Hello']
+        self.assertEqual(max_integer(string), 'Hello')
 
-    def test_one_negative(self):
-        """Tests for list with one negative number"""
-        on = [200, 10, 8, -36, 14, 50]
-        self.assertEqual(max_integer(on), 200)
-
-    def test_all_negative(self):
-        """Tests for list with all negative numbers"""
-        n = [-6, -50, -75, -1, -100]
-        self.assertEqual(max_integer(n), -1)
-
-    def test_none(self):
-        """Tests for passing none as argument"""
-        with self.assertRaises(TypeError):
-            max_integer(None)
-
-    def test_non_int_arg(self):
-        """Tests for a non-int type in list"""
-        string = [1, 2, "Hello", 4, 5]
-        with self.assertRaises(TypeError):
-            max_integer(string)
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

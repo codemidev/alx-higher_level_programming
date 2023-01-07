@@ -1,4 +1,6 @@
 #!/usr/bin/python3
 def print_matrix_integer(matrix=[[]]):
-    for elm in matrix:
-        print(" ".join("{:d}".format(i) for i in elm))
+    for i in matrix:
+        for j in i:
+            print("{:d}".format(j), end=" " if i[-1] != j else "")
+        print()

@@ -1,12 +1,9 @@
 #!/usr/bin/python3
-# 6-base_geometry.py
-# Brennan D Baraban <375@holbertonschool.com>
-"""Defines a base geometry class BaseGeometry."""
+"""Empty class with non-implemented area def"""
 
 
 class BaseGeometry:
-    """Represent base geometry."""
-
+    """Define BaseGeometry class"""
     def area(self):
-        """Not implemented."""
+        """Return area, not uet implemented"""
         raise Exception("area() is not implemented")

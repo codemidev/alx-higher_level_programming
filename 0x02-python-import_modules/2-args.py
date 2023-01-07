@@ -1,9 +1,7 @@
 #!/usr/bin/python3
+from sys import argv
 if __name__ == "__main__":
-    from sys import argv
-    l = len(argv)
-    print("{:d} {:s}{:s}".format(l - 1, "argument" if l <= 2 else "arguments",
-                                 "." if l == 1 else ":"))
-    for i, s in enumerate(argv):
-        if i > 0:
-            print("{:d}: {:s}".format(i, s))
+    a = len(argv) - 1
+    print("{} argument{}".format(a, ':' if a == 1 else 's:' if a else 's.'))
+    for x in range(1, a + 1):
+        print("{}: {}".format(x, argv[x]))
